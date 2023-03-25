@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绑定样式</title>
+    <script src="../../vue.js"></script>
+    <style type="text/css">
+        .font{
+            font-size: large;
+        }
+        .cs1{
+            background-color: black;
+        }
+        .cs2{
+            background-color: aliceblue;
+        }
+        .cs3{
+            background-color: aqua;
+        }
+    </style>
+</head>
+<!--
+
+-->
+<body>
+    <!--class样式绑定-->
+    <div class="weather">
+        <!--字符串写法--适用于样式的类名不确定，需要动态指定-->
+        <span class="font" :class="style">绑定样式</span>
+        <button @click="change">点我换颜色</button>
+    </div>
+
+    <div>
+        <!--数组写法--适用于样式的个数和名字都不确定，需要动态指定-->
+        <span class="font" :class="arr">绑定样式</span>
+    </div>
+
+    <div>
+        <!--对象写法--适用于样式的个数和名字都确定，但需要动态决定用不用
+        ，需要动态指定-->
+        <span class="font" :class="obj">绑定样式</span>
+    </div>
+
+
+
+    <!--style样式绑定-->
+    <div>
+        <!--对象写法---->
+        <span class="font" :style="styleObj">绑定样式</span>
+        <!--数组写法---->
+        <span class="font" :style="styleObj">绑定样式</span>
+    </div>
+
+</body>
+<script type="text/javascript">
+    const vm = new Vue({
+        el:'.weather',
+        data:{
+            style:'cs1',
+            arr:['cs1','cs2','cs3'],
+            obj:{
+                cs1:true,
+                cs2:false
+            },
+            styleObj:{
+                fontSize:'40px'
+            },
+            styleArr:[
+                {
+                    fontSize:'40px'
+                },
+                {
+                    backgroundColor:'black'
+                }
+            ]
+        },
+        methods:{
+            change(){
+                const arr = ['cs1','cs2','cs3']
+                const index = Math.floor(Math.random()*3)
+                this.style = arr[index]
+            }
+        }
+    })
+
+</script>
+</html>
