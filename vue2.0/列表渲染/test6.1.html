@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>key的原理</title>
+    <script src="../../vue.js"></script>
+</head>
+<!--
+    Vue根据key作为关键字来进行比对新旧虚拟DOM
+    从而实现DOM的复用
+    如果对数据进行了破坏顺序的操作，key需要使用 id（推荐）
+    如果对数据没有进行了破坏顺序的操作，key可以使用 index
+    如果不写key，Vue会自动填充index作为key的值
+-->
+<body>
+   <ul class="person">
+       <li v-for="p in persons" :key="p.id">
+           {{p.id}}
+       </li>
+   </ul>
+
+
+
+</body>
+<script type="text/javascript">
+    const vm = new Vue({
+        el:'.person',
+        data:{
+            persons:[{id:1}],
+        }
+    })
+
+
+</script>
+</html>

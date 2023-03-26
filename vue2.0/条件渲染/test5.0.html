@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>绑定样式</title>
+    <title>条件渲染</title>
     <script src="../../vue.js"></script>
     <style type="text/css">
         .font{
@@ -23,56 +23,37 @@
 
 -->
 <body>
-    <!--class样式绑定-->
+
     <div class="weather">
-        <!--字符串写法--适用于样式的类名不确定，需要动态指定-->
-        <span class="font" :class="style">绑定样式</span>
-        <button @click="change">点我换颜色</button>
+        <!--v-show做条件渲染 在查看源代码中可以显示
+        只是通过将display的属性值设置为none，进行隐藏
+        也就是结点还存在只是调属性
+        <span v-show="true">条件渲染</span>
+        <span v-show="1 === 1">条件渲染</span>-->
+
+        <!--v-if做条件渲染的话可以源代码中是看不到的
+        也就是结点不存在然后添加和删除结点
+        如果变化频繁相对v-show更加小号性能
+        <span v-if="true">条件渲染</span>
+        <span v-if="1===1">条件渲染</span>-->
+
+        <!--使用v-if、v-else-if、v-else组合必须
+        要连续使用如果中间打断会报错-->
+
+        <!--template标签不会破坏结构但是只能和v-if配合使用-->
+        <template v-if="true">
+            <span>1</span>
+            <span>1</span>
+        </template>
     </div>
 
-    <div>
-        <!--数组写法--适用于样式的个数和名字都不确定，需要动态指定-->
-        <span class="font" :class="arr">绑定样式</span>
-    </div>
-
-    <div>
-        <!--对象写法--适用于样式的个数和名字都确定，但需要动态决定用不用
-        ，需要动态指定-->
-        <span class="font" :class="obj">绑定样式</span>
-    </div>
-
-
-
-    <!--style样式绑定-->
-    <div>
-        <!--对象写法---->
-        <span class="font" :style="styleObj">绑定样式</span>
-        <!--数组写法---->
-        <span class="font" :style="styleObj">绑定样式</span>
-    </div>
 
 </body>
 <script type="text/javascript">
     const vm = new Vue({
         el:'.weather',
         data:{
-            style:'cs1',
-            arr:['cs1','cs2','cs3'],
-            obj:{
-                cs1:true,
-                cs2:false
-            },
-            styleObj:{
-                fontSize:'40px'
-            },
-            styleArr:[
-                {
-                    fontSize:'40px'
-                },
-                {
-                    backgroundColor:'black'
-                }
-            ]
+
         },
         methods:{
             change(){

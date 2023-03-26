@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>列表渲染</title>
+    <script src="../../vue.js"></script>
+</head>
+<!--
+
+-->
+<body>
+    <!-- 循环数组
+    // 方式1
+   <ul class="person">
+       <li v-for="p in persons" :key="p.id">
+           {{p.id}}
+       </li>
+   </ul>
+    // 方式2
+   <ul class="person">
+       <li v-for="(p,index) in persons" :key="index">
+           {{p.id}}}
+       </li>
+   </ul>-->
+    <!--// 遍历对象
+    <ul class="person">
+        <li v-for="(p,index) in car" :key="index">
+            {{p}}
+        </li>
+    </ul>
+
+    // 遍历字符串
+    <ul class="person">
+        <li v-for="(p,index) in str" :key="index">
+            {{p}}
+        </li>
+    </ul>-->
+
+
+</body>
+<script type="text/javascript">
+    const vm = new Vue({
+        el:'.person',
+        data:{
+            persons:[{id:1}],
+            car:{
+                id:1,
+                type:'big'
+            },
+            str:'hello'
+        }
+    })
+
+
+</script>
+</html>
